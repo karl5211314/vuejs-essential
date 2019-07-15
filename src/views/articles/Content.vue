@@ -380,6 +380,19 @@ export default {
         }
       })
     },
+    // 返回带用户信息的文章的某项属性
+    recompute(key) {
+      const articleId = this.$route.params.articleId
+      // 这里的文章是基于 getters.computedArticles 的，所以包含用户信息了
+      const article = this.$store.getters.getArticleById(articleId)
+      let arr
+
+      if (article) {
+        arr = article[key]
+      }
+
+      return arr || []
+    },
   }
 }
 </script>
